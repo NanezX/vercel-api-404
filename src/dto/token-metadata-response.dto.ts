@@ -27,5 +27,6 @@ export class TokenMetadataRespondeDto {
 
   constructor(data: { url_: string }) {
     this.image = data.url_;
+    this.attributes = [];
   }
 }

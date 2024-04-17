@@ -1,26 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import configuration from './config/configuration';
 import { ethers, getDefaultProvider } from 'ethers';
-import { Request } from 'express';
 
 import { abi } from './abis/IDiamondNFT404.json';
 import { TokenMetadataRespondeDto } from './dto/token-metadata-response.dto';
 
 @Injectable()
 export class AppService {
-  async getTokenById(
-    id: string,
-    req: Request,
-  ): Promise<TokenMetadataRespondeDto> {
+  async getTokenById(id: string): Promise<TokenMetadataRespondeDto> {
     const contract = await this.get_contract();
 
     console.log('name:', await contract.name());
 
-    const protocol = req.protocol;
-    const host = req.headers.host;
-
     return new TokenMetadataRespondeDto({
-      url_: `${protocol}://${host}/api/token/image/${id}`,
+      url_: `https://picsum.photos/seed/${id}/3000/3000`,
     });
   }
 

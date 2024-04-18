@@ -25,8 +25,14 @@ export class TokenMetadataRespondeDto {
   @ValidateNested({ each: true })
   attributes: Attributes[];
 
+  @ApiProperty({ example: 'The most random NFT that you will find' })
+  @IsNotEmpty()
+  @IsString()
+  description: string;
+
   constructor(data: { url_: string; atributes_: any[] }) {
     this.image = data.url_;
     this.attributes = data.atributes_;
+    this.description = 'The best collection using ERC404 is CAT404';
   }
 }

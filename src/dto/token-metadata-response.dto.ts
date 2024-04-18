@@ -25,8 +25,8 @@ export class TokenMetadataRespondeDto {
   @ValidateNested({ each: true })
   attributes: Attributes[];
 
-  constructor(data: { url_: string }) {
+  constructor(data: { url_: string; atributes_: any[] }) {
     this.image = data.url_;
-    this.attributes = [];
+    this.attributes = data.atributes_;
   }
 }

@@ -3,17 +3,41 @@ import configuration from './config/configuration';
 import { ethers, getDefaultProvider } from 'ethers';
 
 import { abi } from './abis/IDiamondNFT404.json';
-import { TokenMetadataRespondeDto } from './dto/token-metadata-response.dto';
+import {
+  Attributes,
+  TokenMetadataRespondeDto,
+} from './dto/token-metadata-response.dto';
 
 @Injectable()
 export class AppService {
   async getTokenById(id: string): Promise<TokenMetadataRespondeDto> {
     const contract = await this.get_contract();
 
-    console.log('name:', await contract.name());
+    const variantsName = [...(await contract.getVariantsName())];
+
+    // All variant have 5 as counter
+    // Of course this is not what production will have
+    const variantsCounters = variantsName.map(() => 5n);
+
+    const jsonDnaString = await contract.dnaOfToJson(
+      BigInt(id),
+      variantsCounters,
+    );
+
+    const dnaData = JSON.parse(jsonDnaString);
+
+    const attributes: Attributes[] = [];
+
+    for (const key in dnaData) {
+      attributes.push({
+        trait_type: key,
+        value: dnaData[key],
+      });
+    }
 
     return new TokenMetadataRespondeDto({
       url_: `https://picsum.photos/seed/${id}/3000/3000`,
+      atributes_: attributes,
     });
   }
 

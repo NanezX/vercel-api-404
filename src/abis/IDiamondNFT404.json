@@ -753,6 +753,19 @@
     },
     {
       "inputs": [],
+      "name": "getBaseUri",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "getERC721QueueLength",
       "outputs": [
         {
@@ -796,6 +809,32 @@
           "internalType": "address",
           "name": "fallbackAddress",
           "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSchemaHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVariantsName",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
         }
       ],
       "stateMutability": "view",
@@ -1300,4 +1339,3 @@
   "linkReferences": {},
   "deployedLinkReferences": {}
 }
-  

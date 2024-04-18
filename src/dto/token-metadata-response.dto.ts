@@ -30,9 +30,9 @@ export class TokenMetadataRespondeDto {
   @IsString()
   description: string;
 
-  constructor(data: { url_: string; atributes_: any[] }) {
-    this.image = data.url_;
-    this.attributes = data.atributes_;
-    this.description = 'The best collection using ERC404 is CAT404';
+  constructor(id_: string, atributes_: any[]) {
+    this.image = `https://picsum.photos/seed/${id_}/640/640`;
+    this.attributes = atributes_;
+    this.description = 'The best collection using ERC404 is Pet404';
   }
 }

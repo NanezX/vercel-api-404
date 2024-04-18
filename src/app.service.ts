@@ -35,10 +35,7 @@ export class AppService {
       });
     }
 
-    return new TokenMetadataRespondeDto({
-      url_: `https://picsum.photos/seed/${id}/3000/3000`,
-      atributes_: attributes,
-    });
+    return new TokenMetadataRespondeDto(id, attributes);
   }
 
   async get_contract(): Promise<ethers.Contract> {

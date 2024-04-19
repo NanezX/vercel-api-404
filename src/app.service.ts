@@ -35,7 +35,12 @@ export class AppService {
       });
     }
 
-    return new TokenMetadataRespondeDto(id, attributes);
+    const name = await contract.name();
+    const readableId = await contract.getReadableTokenId(id);
+
+    const nameWithReadableId = `${name}#${readableId}`;
+
+    return new TokenMetadataRespondeDto(id, attributes, nameWithReadableId);
   }
 
   async get_contract(): Promise<ethers.Contract> {

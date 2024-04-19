@@ -19,6 +19,11 @@ export class TokenMetadataRespondeDto {
   @IsString()
   image: string;
 
+  @ApiProperty({ example: 'Pet#3' })
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
   @ApiProperty({ type: [Attributes] })
   @IsNotEmpty()
   @IsArray()
@@ -30,9 +35,10 @@ export class TokenMetadataRespondeDto {
   @IsString()
   description: string;
 
-  constructor(id_: string, atributes_: any[]) {
+  constructor(id_: string, atributes_: any[], name_: string) {
     this.image = `https://picsum.photos/seed/${id_}/640/640`;
     this.attributes = atributes_;
     this.description = 'The best collection using ERC404 is Pet404';
+    this.name = name_;
   }
 }

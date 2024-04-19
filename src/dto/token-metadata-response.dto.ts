@@ -37,8 +37,8 @@ export class TokenMetadataRespondeDto {
 
   constructor(id_: string, atributes_: any[], name_: string) {
     this.image = `https://picsum.photos/seed/${id_}/640/640`;
+    this.name = name_;
     this.attributes = atributes_;
     this.description = 'The best collection using ERC404 is Pet404';
-    this.name = name_;
   }
 }

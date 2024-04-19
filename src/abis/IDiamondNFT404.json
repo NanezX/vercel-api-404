@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IDiamondNFT404",
-  "sourceName": "contracts/diamond/IDiamondNFT404.sol",
+  "contractName": "IPET404Exposer",
+  "sourceName": "contracts/test/examples/IPET404Exposer.sol",
   "abi": [
     {
       "inputs": [],
@@ -304,7 +304,7 @@
           "type": "address"
         }
       ],
-      "name": "__NFT404_init",
+      "name": "__PET404_init",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -862,6 +862,47 @@
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account_",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value_",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "withErc721_",
+          "type": "bool"
+        }
+      ],
+      "name": "mintERC20",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account_",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value_",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintERC20",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {

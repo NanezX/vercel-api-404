@@ -195,15 +195,30 @@
           "type": "uint256"
         }
       ],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "inputs": [
         {
           "internalType": "address",
-          "name": "automationRegistry_",
+          "name": "caller_",
           "type": "address"
+        },
+        {
+          "internalType": "uint96",
+          "name": "minPending_",
+          "type": "uint96"
+        },
+        {
+          "internalType": "uint128",
+          "name": "minWait_",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "maxWait_",
+          "type": "uint128"
         },
         {
           "components": [
@@ -302,6 +317,11 @@
           "internalType": "address",
           "name": "initialMintRecipient_",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "uniswapFactory_",
+          "type": "address"
         }
       ],
       "name": "__PET404_init",
@@ -381,6 +401,30 @@
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "checkData",
+          "type": "bytes"
+        }
+      ],
+      "name": "checkUpkeep",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "upkeepNeeded",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "performData",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -766,6 +810,25 @@
     },
     {
       "inputs": [],
+      "name": "getCallerAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner_",
+          "type": "address"
+        }
+      ],
       "name": "getERC721QueueLength",
       "outputs": [
         {
@@ -788,6 +851,11 @@
           "internalType": "uint256",
           "name": "count_",
           "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "owner_",
+          "type": "address"
         }
       ],
       "name": "getERC721TokensInQueue",
@@ -873,6 +941,25 @@
         }
       ],
       "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "isUniswapV3Pool",
       "outputs": [
         {
           "internalType": "bool",
@@ -1014,6 +1101,19 @@
     {
       "inputs": [
         {
+          "internalType": "bytes",
+          "name": "performData",
+          "type": "bytes"
+        }
+      ],
+      "name": "performUpkeep",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
           "name": "owner_",
           "type": "address"
@@ -1068,13 +1168,6 @@
         }
       ],
       "name": "rawFulfillRandomWords",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "reveal",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -1157,6 +1250,19 @@
         }
       ],
       "name": "setBaseUri",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newCaller_",
+          "type": "address"
+        }
+      ],
+      "name": "setCallerAddress",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

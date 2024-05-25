@@ -25,11 +25,6 @@ export class DataService {
 
   async get_contract(): Promise<ethers.Contract> {
     const provider = getDefaultProvider(configuration().sepoliaRpcUrl);
-
-    return new ethers.Contract(
-      '0x36983711f9C4869F0B9BEb2Cf677814bb40d41c5',
-      abi,
-      provider,
-    );
+    return new ethers.Contract(configuration().ERC404Meme, abi, provider);
   }
 }

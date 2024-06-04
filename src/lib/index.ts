@@ -1,2 +1,2 @@
-export { getContract, getContractAddress, isValidBigInt } from './utils';
+export * from './utils';
 export { Attribute } from './common';

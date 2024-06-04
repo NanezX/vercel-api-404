@@ -33,6 +33,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"ethers": "^6.13.0"
+		"@types/async": "^3.2.24",
+		"async": "^3.2.5",
+		"ethers": "^6.13.0",
+		"sharp": "^0.33.4"
 	}
 }

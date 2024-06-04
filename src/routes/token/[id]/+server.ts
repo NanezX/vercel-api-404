@@ -12,7 +12,7 @@ export async function GET({ params, url }) {
 		});
 	}
 
-	const baseUrl = `${url.protocol}://${url.host}`;
+	const baseUrl = `${url.protocol}//${url.host}`;
 
 	// Create the contract instance for IDiamondNFT404 (generate just once)
 	const contract = getContract();

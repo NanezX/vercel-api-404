@@ -3,6 +3,7 @@ import { PRIVATE_RPC_URL } from '$env/static/private';
 import { PUBLIC_ERC404_ADDRESSS } from '$env/static/public';
 import { abi } from '../abis/IDiamondNFT404.json';
 import { error as svelteError } from '@sveltejs/kit';
+import { getVariants } from './ipfs';
 
 type ContractOption = {
 	/**
@@ -35,9 +36,8 @@ export async function getDnaJson(id: string, options: GetDnaOptions = {}): Promi
 	// if (dnaCached) return dnaCached;
 
 	// Using default values (generate new ones) if no options were used
-	const { contract = getContract(), variantCounters = [1, 1, 1, 1, 1, 1, 1] } = options;
-	// const { contract = getContract(), variantCounters = (await getVariants()).getCounters() } =
-	// 	options;
+	const { contract = getContract(), variantCounters = (await getVariants()).getCounters() } =
+		options;
 
 	// Use the contract to interpreate the DNA using the counters
 	try {

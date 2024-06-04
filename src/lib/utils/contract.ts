@@ -31,10 +31,6 @@ export function getContractAddress(): string {
 }
 
 export async function getDnaJson(id: string, options: GetDnaOptions = {}): Promise<string> {
-	// Check if DNA JSON is cached
-	// const dnaCached = this.cache.get<string>(id);
-	// if (dnaCached) return dnaCached;
-
 	// Using default values (generate new ones) if no options were used
 	const { contract = getContract(), variantCounters = (await getVariants()).getCounters() } =
 		options;
@@ -42,7 +38,6 @@ export async function getDnaJson(id: string, options: GetDnaOptions = {}): Promi
 	// Use the contract to interpreate the DNA using the counters
 	try {
 		const dnaJson = await contract.dnaOfToJson(id, variantCounters);
-		// 	// this.cache.set(id, dnaJson);
 
 		return dnaJson;
 	} catch (error) {

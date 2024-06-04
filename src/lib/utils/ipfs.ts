@@ -3,10 +3,6 @@ import { Variants, getContract } from '$lib';
 
 type FetchIpfsOptions = {
 	/**
-	 * Define if want the value to be saved in cache. Default value is false
-	 */
-	cache?: boolean;
-	/**
 	 * Define the error message in case of failure.
 	 */
 	errorMsg?: string;
@@ -14,14 +10,7 @@ type FetchIpfsOptions = {
 
 async function fetchIpfs(url_: URL, options: FetchIpfsOptions = {}): Promise<Buffer> {
 	// Get options and default values
-	const { errorMsg = 'Failed to fetch data from IPFS', cache = false } = options;
-
-	// // Getting the URL Key
-	// const urlKey = url_.toString();
-
-	// // Check if the data buffer is on cache and return it
-	// const cachedData = this.cache.get<Buffer>(urlKey);
-	// if (cachedData) return cachedData;
+	const { errorMsg = 'Failed to fetch data from IPFS' } = options;
 
 	// Make the fetch using the URL
 	const response = await fetch(url_);
@@ -33,11 +22,6 @@ async function fetchIpfs(url_: URL, options: FetchIpfsOptions = {}): Promise<Buf
 
 	// Return the response as buffer
 	const bufferData = Buffer.from(await response.arrayBuffer());
-
-	// if (cache) {
-	// 	// Save response buffer in cache
-	// 	this.cache.set(urlKey, bufferData);
-	// }
 
 	return bufferData;
 }
@@ -63,7 +47,7 @@ export async function getVariants(): Promise<Variants> {
 	const variantUrl = new URL('variants.json', baseUrl);
 
 	// Make the fetch
-	const respBuffer = await fetchIpfs(variantUrl, { cache: true });
+	const respBuffer = await fetchIpfs(variantUrl);
 
 	// Return the Variants class using the JSON created from the Buffer
 	return new Variants(JSON.parse(respBuffer.toString()), baseUrl);
@@ -77,7 +61,6 @@ export async function getImageBuffers(urls: URL[]): Promise<Buffer[]> {
 		const errorMsg = 'Failed to fetch layer';
 		try {
 			return await fetchIpfs(url, {
-				cache: false,
 				errorMsg
 			});
 		} catch (error) {

@@ -62,3 +62,20 @@ export async function getDnaJson(id: string, options: GetDnaOptions = {}): Promi
 		svelteError(code, { message });
 	}
 }
+
+export async function getNameWithReadableId(
+	id: string,
+	options: ContractOption = {}
+): Promise<string> {
+	// If no contract instance, generate one
+	const { contract = getContract() } = options;
+
+	// Get name of the ERC404 Token
+	const name = await contract.name();
+
+	// Get the readable ID for better user experience
+	const readableId = await contract.getReadableTokenId(id);
+
+	// Generate the name with a readable ID
+	return `${name}#${readableId}`;
+}

@@ -1,4 +1,5 @@
 import { Attribute } from '../attribute/attribute.entity';
+import { error } from '@sveltejs/kit';
 
 // Type for better handling that also should follow the Variant json
 type VariantJSON = {
@@ -78,8 +79,7 @@ export class Variants {
 			);
 
 			if (!variant) {
-				// TODO: HERE
-				throw new Error('LOL ERROR');
+				error(500, 'Internal error: Missing variant');
 			}
 
 			// If variant name is none, means that the image will not be resolved. This

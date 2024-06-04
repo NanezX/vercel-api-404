@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 import { getDnaJson } from './contract';
 import { getImageBuffers, getVariants } from './ipfs';
 import sharp from 'sharp';
@@ -26,6 +27,10 @@ export async function getPicture(id: string) {
 
 	// Get the Width and Height of the images
 	const { width, height } = await sharp(images[0]).metadata();
+
+	if (!width || !height) {
+		error(500, 'Internal error: width or height not processed');
+	}
 
 	// Composite the images with this value to guarantee the transparency
 	const result = await sharp({

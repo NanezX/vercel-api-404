@@ -1,7 +1,7 @@
 import { getDefaultProvider, Contract } from 'ethers';
 import { PRIVATE_RPC_URL } from '$env/static/private';
 import { PUBLIC_ERC404_ADDRESSS } from '$env/static/public';
-import { abi } from './abis/IDiamondNFT404.json';
+import { abi } from '../abis/IDiamondNFT404.json';
 
 export function getContract(): Contract {
 	const provider = getDefaultProvider(PRIVATE_RPC_URL);

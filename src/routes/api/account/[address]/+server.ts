@@ -1,6 +1,6 @@
 import { error, json } from '@sveltejs/kit';
 import { ethers } from 'ethers';
-import { getContract } from '$lib/contract';
+import { getContract } from '$lib';
 import { AccountRespondeDto } from './dto/response.dto.js';
 
 /** @type {import('./$types').RequestHandler} */

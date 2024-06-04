@@ -1,4 +1,4 @@
-import { getContractAddress } from '$lib/contract';
+import { getContractAddress } from '$lib';
 
 /** @type {import('./$types').RequestHandler} */
 export function GET() {
